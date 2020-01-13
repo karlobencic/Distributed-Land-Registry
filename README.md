@@ -1,4 +1,3 @@
-## Karlo Benčić - gruntovnica i katastar na Hyperledger Fabricu
 # Distributed Land Registry
 
 ### Prerequirements and environment setup
