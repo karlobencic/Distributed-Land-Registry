@@ -72,7 +72,7 @@ export class LandRegistry extends Contract {
         }
     }
 
-    public async changeLandOwner(ctx: Context, landNumber: string, newOwner: string) {
+    public async changeLandOwner(ctx: Context, landNumber: string, oldOwner: string, newOwner: string) {
         console.info('============= START : changeLandOwner ===========');
 
         const landAsBytes = await ctx.stub.getState(landNumber); // get the land from chaincode state
@@ -80,7 +80,11 @@ export class LandRegistry extends Contract {
             throw new Error(`${landNumber} does not exist`);
         }
         const land: Land = JSON.parse(landAsBytes.toString());
-        land.owner = newOwner;
+        if (land.owner === oldOwner) {
+            land.owner = newOwner;
+        } else {
+            throw new Error(`${oldOwner} is not allowed to change owner of land ${landNumber}`);
+        }
 
         await ctx.stub.putState(landNumber, Buffer.from(JSON.stringify(land)));
         console.info('============= END : changeLandOwner ===========');

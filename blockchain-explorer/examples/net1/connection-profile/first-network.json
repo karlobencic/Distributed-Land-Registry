@@ -37,7 +37,7 @@
 			"mspid": "Org1MSP",
 			"fullpath": true,
 			"adminPrivateKey": {
-				"path": "/tmp/crypto/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/keystore/ce34a40fe3579a3ec6a2a90e1550d8e4c8ec24222a02e451c08f46c85ab87cd9_sk"
+				"path": "/tmp/crypto/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/keystore/4c7dc82e90b65e682ef7c9a1a068cc8f17654449554444eefdc8df044603fcf5_sk"
 			},
 			"signedCert": {
 				"path": "/tmp/crypto/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/signcerts/Admin@org1.example.com-cert.pem"

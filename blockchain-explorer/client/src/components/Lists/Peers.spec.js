@@ -28,25 +28,7 @@ const setup = () => {
         ledger_height_high: '0',
         ledger_height_low: '10',
         ledger_height_unsigned: true,
-      },
-      {
-        requests: 'grpcs://127.0.0.1:9051',
-        server_hostname: 'peer0.org2.example.com',
-        mspid: 'Org2MSP',
-        peer_type: 'PEER',
-        ledger_height_high: '10',
-        ledger_height_low: '0',
-        ledger_height_unsigned: true,
-      },
-      {
-        requests: 'grpcs://127.0.0.1:10051',
-        server_hostname: 'peer1.org2.example.com',
-        mspid: 'Org2MSP',
-        peer_type: 'PEER',
-        ledger_height_high: '10',
-        ledger_height_low: '10',
-        ledger_height_unsigned: false,
-      },
+      }
     ],
   };
 

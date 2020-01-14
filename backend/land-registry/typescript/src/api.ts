@@ -26,7 +26,7 @@ const initWallet = () => {
 const createGateway = async (wallet) => {
     // Create a new gateway for connecting to our peer node.
     const gateway = new Gateway();
-    await gateway.connect(ccpPath, { wallet, identity: 'user1', discovery: { enabled: true, asLocalhost: true } });
+    await gateway.connect(ccpPath, { wallet, identity: 'Karlo', discovery: { enabled: true, asLocalhost: true } });
     return gateway;
 };
 
@@ -44,9 +44,9 @@ app.get('/api/query-all', async (req, res) => {
         const wallet = initWallet();
 
         // Check to see if we've already enrolled the user.
-        const userExists = await wallet.exists('user1');
+        const userExists = await wallet.exists('Karlo');
         if (!userExists) {
-            console.log('An identity for the user "user1" does not exist in the wallet');
+            console.log('An identity for the user "Karlo" does not exist in the wallet');
             console.log('Run the registerUser.ts application before retrying');
             return;
         }
@@ -72,9 +72,9 @@ app.get('/api/query/:land_id', async (req, res) => {
         const wallet = initWallet();
 
         // Check to see if we've already enrolled the user.
-        const userExists = await wallet.exists('user1');
+        const userExists = await wallet.exists('Karlo');
         if (!userExists) {
-            console.log('An identity for the user "user1" does not exist in the wallet');
+            console.log('An identity for the user "Karlo" does not exist in the wallet');
             console.log('Run the registerUser.ts application before retrying');
             return;
         }
@@ -100,9 +100,9 @@ app.post('/api/add', async (req, res) => {
         const wallet = initWallet();
 
         // Check to see if we've already enrolled the user.
-        const userExists = await wallet.exists('user1');
+        const userExists = await wallet.exists('Karlo');
         if (!userExists) {
-            console.log('An identity for the user "user1" does not exist in the wallet');
+            console.log('An identity for the user "Karlo" does not exist in the wallet');
             console.log('Run the registerUser.ts application before retrying');
             return;
         }
@@ -111,7 +111,7 @@ app.post('/api/add', async (req, res) => {
         const contract = await getContract(gateway);
 
         // Submit the specified transaction.
-        await contract.submitTransaction('createLand', req.body.land_id, req.body.coordinates, req.body.owner);
+        await contract.submitTransaction('createLand', req.body.land_id, req.body.coordinates, 'Karlo');
 
         console.log('Transaction has been submitted');
         res.send('Transaction has been submitted');
@@ -121,6 +121,7 @@ app.post('/api/add', async (req, res) => {
 
     } catch (error) {
         console.error(`Failed to submit transaction: ${error}`);
+        res.status(500).json({error});
     }
 });
 
@@ -130,9 +131,9 @@ app.post('/api/change-owner/:land_id', async (req, res) => {
         const wallet = initWallet();
 
         // Check to see if we've already enrolled the user.
-        const userExists = await wallet.exists('user1');
+        const userExists = await wallet.exists('Karlo');
         if (!userExists) {
-            console.log('An identity for the user "user1" does not exist in the wallet');
+            console.log('An identity for the user "Karlo" does not exist in the wallet');
             console.log('Run the registerUser.js application before retrying');
             return;
         }
@@ -141,7 +142,7 @@ app.post('/api/change-owner/:land_id', async (req, res) => {
         const contract = await getContract(gateway);
 
         // Submit the specified transaction.
-        await contract.submitTransaction('changeLandOwner', req.params.land_id, req.body.owner);
+        await contract.submitTransaction('changeLandOwner', req.params.land_id, 'Karlo', req.body.owner);
 
         console.log('Transaction has been submitted');
         res.send('Transaction has been submitted');
@@ -151,6 +152,7 @@ app.post('/api/change-owner/:land_id', async (req, res) => {
 
     } catch (error) {
         console.error(`Failed to submit transaction: ${error}`);
+        res.status(500).json({error});
     }
 });
 

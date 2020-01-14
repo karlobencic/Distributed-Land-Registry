@@ -31,6 +31,6 @@ scrape_configs:
     # scheme defaults to 'http'.
 
     static_configs:
-    - targets: ['localhost:8443','localhost:9443','localhost:9444','localhost:9445','localhost:9446']	
-    - targets: ['orderer.example.com:9443', 'peer0.org1.example.com:9443', 'peer1.org1.example.com:9443', 'peer0.org2.example.com:9443', 'peer1.org2.example.com:9443']
+    - targets: ['localhost:8443','localhost:9443','localhost:9444','localhost:9445','localhost:9446']
+    - targets: ['orderer.example.com:9443', 'peer0.org1.example.com:9443', 'peer1.org1.example.com:9443']
       #- targets: [‘peer0.org1.example.com:9443’, ‘peer1.org1.example.com:9444’, ‘peer0.org2.example.com:9445’, ‘peer1.org2.example.com:9446’, ‘orderer.example.com:8443’]

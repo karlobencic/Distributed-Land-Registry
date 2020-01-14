@@ -68,14 +68,6 @@ const setup = () => {
         requests: 'grpcs://127.0.0.1:8051',
         server_hostname: 'peer1.org1.example.com',
       },
-      {
-        requests: 'grpcs://127.0.0.1:9051',
-        server_hostname: 'peer0.org2.example.com',
-      },
-      {
-        requests: 'grpcs://127.0.0.1:10051',
-        server_hostname: 'peer1.org2.example.com',
-      },
     ],
     peerStatus: [
       {

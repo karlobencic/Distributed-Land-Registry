@@ -80,8 +80,6 @@ describe('Explorer dashboard', () => {
 			});
 			expect(peerUrlStrList).to.include('peer0.org1.example.com');
 			expect(peerUrlStrList).to.include('peer1.org1.example.com');
-			expect(peerUrlStrList).to.include('peer0.org2.example.com');
-			expect(peerUrlStrList).to.include('peer1.org2.example.com');
 			expect(peerUrlStrList).to.include('orderer0.example.com');
 			expect(peerUrlStrList).to.include('orderer1.example.com');
 			expect(peerUrlStrList).to.include('orderer2.example.com');

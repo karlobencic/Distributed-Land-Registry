@@ -23,8 +23,11 @@ const InfoPanel = () => {
         setLoading(true);
 
         api.land.changeOwner(state.land.id, newOwner).then(() => {
-            setLoading(false);
             dispatch(showLand({id: state.land.id, owner: newOwner}));
+        }).catch((e) => {
+            console.error(e);
+        }).finally(() => {
+            setLoading(false);
         });
     };
 
@@ -99,10 +102,6 @@ const InfoPanel = () => {
                         <Form.Group>
                             <Form.Label>Land ID</Form.Label>
                             <Form.Control name="land_id" type="text" placeholder="Enter Land ID" required onChange={handleChangeCreate}/>
-                        </Form.Group>
-                        <Form.Group>
-                            <Form.Label>Owner</Form.Label>
-                            <Form.Control name="owner" type="text" placeholder="Enter owner name" required onChange={handleChangeCreate}/>
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>Coordinates</Form.Label>
