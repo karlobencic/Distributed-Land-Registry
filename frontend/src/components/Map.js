@@ -6,6 +6,23 @@ import { useStore } from '../store';
 import { showLand } from '../actions';
 import api from "../api";
 
+function hashCode(str) {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+        hash = str.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    return hash;
+}
+
+function intToRGB(i){
+    let c = (i & 0x00FFFFFF)
+        .toString(16)
+        .toUpperCase();
+
+    const hex = "00000".substring(0, 6 - c.length) + c;
+    return '#' + hex;
+}
+
 const Map = () => {
     const zoom = 15;
     const center = {
@@ -40,13 +57,15 @@ const Map = () => {
                 console.error(e);
             }
 
+            const landColor = intToRGB(hashCode(land.Record.owner));
+
             let p = new google.maps.Polygon({
                 map: google.map,
                 paths: coords,
                 strokeColor: '#FF0000',
                 strokeOpacity: 0.8,
                 strokeWeight: 2,
-                fillColor: '#00FF00',
+                fillColor: landColor,
                 fillOpacity: 0.35,
             });
 
